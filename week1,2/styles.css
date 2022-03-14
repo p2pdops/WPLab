@@ -1,0 +1,17 @@
+.inputbox {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    max-width: 350px;
+}
+
+.flex-horizontal {
+    flex-direction: row;
+}
+
+.buttonsbox {
+    max-width: 350px;
+    padding: 0 16px;
+    display: flex;
+    justify-content: space-evenly;
+}
