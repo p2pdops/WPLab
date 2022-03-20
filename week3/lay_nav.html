@@ -1,21 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Navigation</title>
 </head>
-<body>
 
+<body style="background-color: blanchedalmond;">
+    <style>
+        li { list-style-type: none; }
+        a {
+            background-color: red;
+            color: white;
+            margin: 10px 2px;
+            padding: 10px;
+        }
+    </style>
     <h4>Navigation Links</h4>
-    <ul>
-        <li>
-            <a href="./page_home.html" target="frame">Home</a>
-        </li>
-        <li>
-            <a href="./page_login.html" target="frame">Login</a>  
-        </li>
-        <li>
-            <a href="./page_register.html" target="frame">Register</a>  
-        </li>
-    </ul>
+    <div style="display: flex; flex-direction: column;">
+        <a href="./page_home.html" target="frame">Home</a>
+        <a href="./page_login.html" target="frame">Login</a>
+        <a href="./page_register.html" target="frame">Register</a>
+    </div>
+
 </body>
+
 </html>
