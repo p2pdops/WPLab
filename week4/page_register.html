@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Register Page</title>
+    <link rel="stylesheet" href="./styles/auth.css">
+</head>
+<body>
+    <h1>Register page</h1>
+    <form name="form">
+        <div class="inputbox">
+            <label for="name">Enter your name:</label>
+            <input id="name" type="text" />
+        </div>
+
+        <div class="inputbox">
+            <label for="age">Enter your age:</label>
+            <input id="age" type="date" value="03/14/2022"/>
+        </div>
+
+        <div class="inputbox">
+            <label for="rollno">Enter your roll.no:</label>
+            <input id="rollno" type="date" value="03/14/2022"/>
+        </div>
+
+        <div class="inputbox">
+            <label for="email">Enter your email:</label>
+            <input id="email" type="email" />
+        </div>
+        <div class="inputbox">
+            <label for="password">Enter your password:</label>
+            <input id="password" type="password" />
+        </div>
+        <div class="inputbox">
+            <label for="confirmpassword">Enter your confirmation password:</label>
+            <input id="confirmpassword" type="password" />
+        </div>
+
+        <div class="inputbox flex-horizontal">
+            <input id="confirm" type="checkbox" />
+            <label for="confirm">I confirm all the above details are correct</label>
+        </div>
+
+        <div class="buttonsbox">
+            <button type="reset">Reset</button>
+            <button type="submit">Register</button>
+        </div>
+
+    </form>
+    <script>
+        const validateName = /[A-z]{4}/g.test;
+        const validateEmail = /.*@.*\..*/g.test;
+        const validateRollNo = /\d{5}A\d{5}/g.test;
+        const validatepassword = /^(?=.*\d)(?=.*[A-z]).{6,20}$/g.test;
+
+        const register = (e) => {
+            e.preventDefault();
+            const name = form.name.value;
+            const age = form.age.value;
+            const rollno = form.rollno.value;
+            const email = form.email.value;
+            const password = form.password.value;
+            const confirmpassword = form.confirmpassword.value;
+
+            console.log('register form', { name, age, rollno, email, password, confirmpassword });
+
+            const invalid = { name: 0, age: 0, rollno: 0, email: 0, password: 0, confirmpassword: 0 };
+            
+            !validateName(name) && !alert('Name is invalid') 
+                    && (invalid.name = true);
+                
+            
+            
+            !validateRollNo(rollno) && !alert('Roll number is invalid') 
+                    && (invalid.rollno = true);
+            
+            !validateEmail(email) && !alert('Email is invalid') 
+                    && (invalid.email = true);
+            
+            !validatepassword(password) && !alert('Password is invalid')
+                    && (invalid.password = true);
+
+            return !(emailInvalid || passwordInvalid);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,25 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Document</title>
-</head>
-<body>
-
-    <frameset cols="30%,70%">
-        <frame >
-
-        </frame>
-        <frameset>
-            <frame>
-
-            </frame>
-            <frame>
-
-            </frame>
-        
-
-        </frame>
-    </frameset>
+    <title>Dashboard Portal</title>
+    <link rel="stylesheet" href="./style.css">
     
-</body>
+</head>
+<frameset rows="30%,*">
+    <frame src="./lay_header.html"></frame>
+    <frameset cols="12%,*">
+        <frame src="./lay_nav.html" ></frame>
+        <frame name="frame" src="./page_home.html" ></frame>
+    </frameset> 
+</frameset>
 </html>
