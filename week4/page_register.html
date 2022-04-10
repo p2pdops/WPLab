@@ -14,12 +14,12 @@
 
         <div class="inputbox">
             <label for="age">Enter your age:</label>
-            <input id="age" type="date" value="03/14/2022"/>
+            <input id="age" type="url" value="03/14/2022"/>
         </div>
 
         <div class="inputbox">
             <label for="rollno">Enter your roll.no:</label>
-            <input id="rollno" type="date" value="03/14/2022"/>
+            <input id="rollno" type="date" value="03/14/2022" >
         </div>
 
         <div class="inputbox">
@@ -68,8 +68,9 @@
             !validateName(name) && !alert('Name is invalid') 
                     && (invalid.name = true);
                 
-            
-            
+            (age < 0 || age > 150) && !alert('Age is invalid')
+                    && (invalid.age = true);
+                    
             !validateRollNo(rollno) && !alert('Roll number is invalid') 
                     && (invalid.rollno = true);
             
