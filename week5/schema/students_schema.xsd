@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<xs:schema
+targetNamespace="http://www.w3schools.com/RedsDevils"
+elementFormDefault="qualified"
+xmlns="http://www.w3schools.com/RedsDevils students_schema.xsd"
+xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="students" type="valuelist"/>
+    <xs:simpleType name="valuelist">
+        <xs:list itemType="xs:string"/>
+    </xs:simpleType>
+
+</xs:schema>
