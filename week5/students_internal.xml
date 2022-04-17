@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE students [
+    <!ELEMENT students (student+)>
+    <!ELEMENT student (roll,name,dep)>
+    <!ELEMENT roll (#PCDATA)>
+    <!ELEMENT name (#PCDATA)>
+    <!ELEMENT dep (#PCDATA)>
+    <!ATTLIST student id CDATA #REQUIRED>
+]>
+<students>
+    <student id="1">
+        <roll>19131A1204</roll>
+        <name>Surya</name>
+        <dep>IT</dep>
+    </student>
+    <student id="2">
+        <roll>19131A1204</roll>
+        <name>Chandra</name>
+        <dep>IT</dep>
+    </student>
+    <student id="3">
+        <roll>19131A1204</roll>
+        <name>Pavan</name>
+        <dep>IT</dep>
+    </student>
+</students>
