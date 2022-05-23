@@ -1,7 +1,4 @@
-
-// Compile: javac -cp ".;sqlite-jdbc.jar" .\Week6A.java
-// Execute: java -cp ".;sqlite-jdbc.jar" Week6A
-// Both: javac -cp ".;sqlite-jdbc.jar" .\Week6A.java ; java -cp ".;sqlite-jdbc.jar" Week6A
+// Compile & Execute: javac .\Week6A.java ; java Week6A
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -9,7 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
-class Week6A {
+class Week6 {
     public static void main(String ar[]) {
         Scanner sc = new Scanner(System.in);
         try {
@@ -22,13 +19,12 @@ class Week6A {
             stCreate.execute("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT);");
 
             do {
-                System.out.println("1. Add User\n2. Display Users\n3. Delete User\n4. Exit");
+                System.out.println("1. Add User\n2. Display Users\n3. Update User\n4. Delete User\n5. Exit");
                 System.out.print("--> Choose your option: ");
                 int op = sc.nextInt();
                 switch (op) {
                     case 1:
-                        // ask name
-                        System.out.print("**Adding name\n--> Choose user's name: ");
+                        System.out.print("****** Adding new user\n--> Choose user's name: ");
                         String newName = sc.next();
                         int newId = con.createStatement()
                                 .executeUpdate("INSERT INTO users(name) VALUES('" + newName + "');");
@@ -47,14 +43,26 @@ class Week6A {
                             System.out.println("--> No users found!");
                         break;
                     case 3:
-                        // ask id, "DELETE FROM users WHERE id = " + id ;
+                    System.out.print("****** Updating user\n--> Enter id to update: ");
+                        int idToUpdate = sc.nextInt();
+                        System.out.print("****** Enter name to update: ");
+                        String updateName = sc.next();
+                        int updateId = con.createStatement()
+                        .executeUpdate("UPDATE users set name='"+updateName+"' WHERE id = " + idToUpdate+";");
+                        System.out.println("Updated user with id: " + updateId);
+                        break;
+                    case 4:
+                        System.out.print("****** Enter id to delete: ");
+                        int idToDelete = sc.nextInt();
+                        int deleteId = con.createStatement()
+                        .executeUpdate("DELETE FROM users WHERE id = " + idToDelete+";");
+                        System.out.println("Deleted user with id: " + deleteId);
                         break;
                     default:
                         System.out.println("-> Invalid option");
                         return;
                 }
             } while (true);
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
