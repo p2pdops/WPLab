@@ -5,18 +5,21 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
+// import oracle.jdbc.driver.OracleDriver;
 
 class Week6 {
     public static void main(String ar[]) {
         Scanner sc = new Scanner(System.in);
         try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
             // Class.forName("org.sqlite.JDBC");
-            Connection con = DriverManager.getConnection("jdbc:sqlite:users.db");
+            // Connection con = DriverManager.getConnection("jdbc:sqlite:users.db");
+            Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","system","tiger");
             System.out.println("Driver Loaded successfully");
 
             System.out.println("Connected to Database");
-            Statement stCreate = con.createStatement();
-            stCreate.execute("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT);");
+            // Statement stCreate = con.createStatement();
+            // stCreate.execute("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT);");
 
             do {
                 System.out.println("1. Add User\n2. Display Users\n3. Update User\n4. Delete User\n5. Exit");
@@ -63,7 +66,7 @@ class Week6 {
                         return;
                 }
             } while (true);
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
