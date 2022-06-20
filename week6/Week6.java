@@ -1,9 +1,8 @@
+
 // Compile & Execute: javac .\Week6A.java ; java Week6A
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Scanner;
 // import oracle.jdbc.driver.OracleDriver;
 
@@ -14,12 +13,13 @@ class Week6 {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             // Class.forName("org.sqlite.JDBC");
             // Connection con = DriverManager.getConnection("jdbc:sqlite:users.db");
-            Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","system","tiger");
+            Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "system", "tiger");
             System.out.println("Driver Loaded successfully");
 
             System.out.println("Connected to Database");
             // Statement stCreate = con.createStatement();
-            // stCreate.execute("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT);");
+            // stCreate.execute("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY
+            // AUTOINCREMENT, name TEXT);");
 
             do {
                 System.out.println("1. Add User\n2. Display Users\n3. Update User\n4. Delete User\n5. Exit");
@@ -46,19 +46,20 @@ class Week6 {
                             System.out.println("--> No users found!");
                         break;
                     case 3:
-                    System.out.print("****** Updating user\n--> Enter id to update: ");
+                        System.out.print("****** Updating user\n--> Enter id to update: ");
                         int idToUpdate = sc.nextInt();
                         System.out.print("****** Enter name to update: ");
                         String updateName = sc.next();
                         int updateId = con.createStatement()
-                        .executeUpdate("UPDATE users set name='"+updateName+"' WHERE id = " + idToUpdate+";");
+                                .executeUpdate(
+                                        "UPDATE users set name='" + updateName + "' WHERE id = " + idToUpdate + ";");
                         System.out.println("Updated user with id: " + updateId);
                         break;
                     case 4:
                         System.out.print("****** Enter id to delete: ");
                         int idToDelete = sc.nextInt();
                         int deleteId = con.createStatement()
-                        .executeUpdate("DELETE FROM users WHERE id = " + idToDelete+";");
+                                .executeUpdate("DELETE FROM users WHERE id = " + idToDelete + ";");
                         System.out.println("Deleted user with id: " + deleteId);
                         break;
                     default:
