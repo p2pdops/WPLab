@@ -4,10 +4,22 @@ targetNamespace="http://www.w3schools.com/RedsDevils"
 elementFormDefault="qualified"
 xmlns="http://www.w3schools.com/RedsDevils students_schema.xsd"
 xmlns:xs="http://www.w3.org/2001/XMLSchema">
-
-    <xs:element name="students" type="valuelist"/>
-    <xs:simpleType name="valuelist">
-        <xs:list itemType="xs:string"/>
-    </xs:simpleType>
-
+    <xs:element name="students">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element
+                      name="student"
+                      maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="roll" type="xs:string"/>
+                            <xs:element name="name" type="xs:string"/>
+                            <xs:element name="dep" type="xs:string"/>
+                        </xs:sequence>
+                        <xs:attribute name="id" type="xs:string" use="required"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 </xs:schema>
